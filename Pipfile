@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-fasthtml = "*"
+python_fasthtml = "*"
 
 [requires]
 python_version = "3.10"
