@@ -11,19 +11,26 @@ def Wrapper(title, description, content, style=1, align=None, color=None, invert
     section = Section(Div(*inner_content, cls='inner'), cls=wrapper_classes)
     return section
 
-def TechWrapper(title, description, style=1, align=None, color=None, invert=False):
-    wrapper_classes = class_list('wrapper style', style, 'align-', align, 'invert', invert, 'color', color)
+def TechWrapper(title, description, style=1, align=None, color=None, invert=False, id=None):
+    # wrapper_classes = class_list('wrapper style', style, 'align-', align, 'invert', invert, 'color', color)
     inner_content = [Div(Section(Header(H3(title)), P(description)), cls="index align-left")]
-    section = Section(Div(*inner_content, cls='inner'), cls=wrapper_classes)
+    section = Section(Div(*inner_content), id=id)
     return section
+
+def my_wrapper(*content):
+    mysec = Section(Div(Div(content, cls='index align-left'), cls='inner'), cls='wrapper style1 align-center')
+    return mysec
 
 
 
 def MyContent(title, description, style=1, align=None, color=None, invert=False):
     wrapper_classes = class_list('wrapper style', style, 'align-', align, 'invert', invert, 'color', color)
     inner_content = [Div(Section(Header(H3(title)), Div(P(description), cls='content')), cls="index align-left")]
-    section = Section(Div(*inner_content, cls='inner'), cls=wrapper_classes)
+    section = Section(Div(*inner_content, cls=''), cls=wrapper_classes)
     return section
+
+def MyContent2(title, description):
+    return Section(Header(H3(title)), Div(P(description), cls='content'))
 
 
 def ItemContent(title, description, image_url=None, icon_type=None, icon=None, xtra=None, url=None):
@@ -38,12 +45,13 @@ def ItemContent(title, description, image_url=None, icon_type=None, icon=None, x
             Div(*content, cls="caption"))
     if url:
         # return Div(A(Section(*content), href=url, cls="mylink", target="_blank"), cls="hover-container")
-        return A(Section(*content), href=url, cls="mylink", target="_blank")
+        return A(Section(*content), href=url, cls="mylink")
     return Div(Section(*content))
 
-def ItemContent2(title, description):
+def ItemContent2(title, description, date=None):
     content = []
-    content.extend([H4(title), P(description)])
+    if date: content.extend([H4(B(title)), P(date), P(description)])
+    else: content.extend([H4(B(title)), P(description)])
     return Div(Section(*content))
 
 
