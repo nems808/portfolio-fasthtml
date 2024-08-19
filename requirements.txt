@@ -1,3 +1,1 @@
 python-fasthtml==0.3.4
-uvicorn==0.30.6
-sanic==19.6.0
