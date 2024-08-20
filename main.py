@@ -5,13 +5,14 @@ app, rt = get_app()
 
 
 def footer():
-    links = (A('items', href='/'), A('gallery', href='/gallery'))
+    links = (A('Built with FastHTML', href='https://docs.fastht.ml/'))
     return Footer(Div(links, cls='inner'), cls='wrapper style1 align-center')
 
 
 def about_me():
     description = "I am a Senior Software Engineer with a strong background in climate modeling, earth system " \
-                  "science, and geospatial data analysis "
+                  "science, geospatial data analysis and data visualization. I have a passion for developing " \
+                  "mobile games in my free time. "
     about_me = MyContent2("About me", description)
     return about_me
 
@@ -131,15 +132,15 @@ def portfolio():
     visualizer = Ul(Li("Web: ", link)),
 
     ios_link = A("https://apps.apple.com/app/sea-level-rise-ar-visualizer/id1563315544",
-             href="https://apps.apple.com/app/sea-level-rise-ar-visualizer/id1563315544", target="_blank")
+                 href="https://apps.apple.com/app/sea-level-rise-ar-visualizer/id1563315544", target="_blank")
     android_link = A("https://play.google.com/store/apps/details?id=com.freegames.gibberish",
-                 href="https://play.google.com/store/apps/details?id=com.freegames.gibberish", target="_blank")
+                     href="https://play.google.com/store/apps/details?id=com.freegames.gibberish", target="_blank")
     web_link = A("https://gibberishgame.com",
-                     href="https://gibberishgame.com", target="_blank")
+                 href="https://gibberishgame.com", target="_blank")
     gibberish = Ul(Li("iOS: ", ios_link),
-              Li("Android:", android_link),
+                   Li("Android:", android_link),
                    Li("Web:", web_link),
-              ),
+                   ),
 
     ios_link = A("https://apps.apple.com/us/app/the-setting-sun-zen-puzzle/id1588174839",
                  href="https://apps.apple.com/us/app/the-setting-sun-zen-puzzle/id1588174839", target="_blank")
@@ -153,7 +154,8 @@ def portfolio():
                                                     "projection visualization tool in AR using Unity3D", xtra=puho),
         ItemContent("Sea level warning tool", "A dashboard for early warning of extreme coastal water levels in the "
                                               "Pacific Ocean", xtra=visualizer),
-        ItemContent("Real-time Sea level data explorer", "Real-time, high-frequency sea-level data web interface", xtra=data_explorer),
+        ItemContent("Real-time Sea level data explorer", "Real-time, high-frequency sea-level data web interface",
+                    xtra=data_explorer),
 
         ItemContent("Gibberish Game Against Friends", "A cross-platform (iOS, Android, and Web), real-time "
                                                       "multiplayer game in Unity3D",
@@ -188,7 +190,7 @@ def get(session):
     ]
     sub = "Senior Software Engineer"
     all_text = my_wrapper(about_me(), technical_skills(), work_experience(), certifications(), additional_experience(),
-                          portfolio())
+                          portfolio(), footer())
     wrapper = Wrapper("Nemanja Komar", sub, Item(items), style=1, align='center')
     return PageWrapper("Nemo's portfolio", wrapper, all_text)
 
